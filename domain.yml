@@ -6,27 +6,86 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_lower_stress
+  - ask_eat_healthy
+  - ask_exercise
+  - inform
+  - out_of_scope
+  - thankyou
+
+entities:
+  - exercise
+  - sleep
+  - stress
+
+slots:
+  confirm_exercise:
+    type: unfeaturized
+  diet:
+    type: unfeaturized
+  exercise:
+    type: unfeaturized
+  goal:
+    type: unfeaturized
+  sleep:
+    type: unfeaturized
+  stress:
+    type: unfeaturized
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "¡Hola! Es hora de su chequeo diario de bienestar. El seguimiento de hábitos saludables es una excelente manera de medir su progreso a lo largo del tiempo. ¿Le gustaría responder algunas preguntas sobre su salud?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Alegrate"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Te ayude en algo?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Genial sigue así!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Chao"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "Soy un bot hecho para la Sofkathon."
+
+  utter_stress_info:
+    - text: "Está bien sentirse abrumado a veces. Trate de establecer expectativas realistas y ejercitar técnicas de administración del tiempo, como dividir las tareas grandes en partes más manejables. Las técnicas de relajación, como la respiración profunda y la meditación, también pueden ser beneficiosas."
+  utter_diet_info:
+    - text: "Una dieta saludable incluye frutas y verduras, cereales integrales, lácteos, proteínas magras y grasas vegetales. Si bien hay espacio en una dieta saludable para las golosinas, el azúcar agregada debe consumirse con moderación. Apunta a una variedad de alimentos y mantén el equilibrio."
+  utter_exercise_info:
+    - text: "La mayoría de los adultos sanos deberían intentar hacer unos 150 minutos de ejercicio moderado por semana. Esto incluye actividades como una caminata rápida o trabajar en el jardín."
+
+  utter_ask_confirm_exercise:
+    - text: "¿Hiciste ejercicio ayer? No te preocupes si no corriste un maratón, ¡caminar cuenta!"
+  utter_ask_exercise:
+    - text: Que tipo de ejercicio hiciste 💪 ?
+  utter_ask_sleep:
+    - text: "¿Cuánto dormiste anoche 💤 ?"
+  utter_ask_diet:
+    - text: "¿Seguiste una dieta saludable 🥦 ayer?"
+  utter_ask_stress:
+    - text: "¿Tu nivel de estrés es bajo, medio o alto 🧘?"
+  utter_ask_goal:
+    - text: "Establecer metas, incluso las pequeñas, es una excelente manera de enfocar su día. ¿Qué quieres lograr hoy 🥇?"
+  utter_slots_values:
+    - text: "Este es tu registro de bienestar diario:\n
+        - Te ejercitaste?: {confirm_exercise}\n
+        - Tipo de ejercicio: {exercise}\n
+        - Suelo: {sleep}\n
+        - Tienes una dieta saludable?: {diet}\n
+        - Nivel de estrés: {stress}\n
+        - Objetivo: {goal}"
+  utter_no_worries:
+    - text: "Todo bien :)"
+  utter_ask_continue:
+    - text: "Lo siento, no lo entiendo del todo. ¿Quieres continuar?"
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+forms:
+  - health_form
